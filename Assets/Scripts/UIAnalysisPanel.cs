@@ -9,6 +9,8 @@ public class UIAnalysisPanel : MonoBehaviour
     [Header("Panels")]
     public GameObject analysisPanel;
     public GameObject startPanel;
+    public GameObject livePanel;
+    public GameObject analysisToggleButton;
 
     [Header("Summary Labels")]
     public TMP_Text finalPositionText;
@@ -38,6 +40,7 @@ public class UIAnalysisPanel : MonoBehaviour
     private void HandleSimEnd()
     {
         analysisPanel.SetActive(true);
+        analysisToggleButton.SetActive(true);
         PopulateLabels();
         BuildTable();
 
@@ -148,6 +151,7 @@ public class UIAnalysisPanel : MonoBehaviour
             Destroy(child.gameObject);
 
         analysisPanel.SetActive(false);
+        livePanel.SetActive(false);
         startPanel.SetActive(true);
     }
 
@@ -159,5 +163,13 @@ public class UIAnalysisPanel : MonoBehaviour
         #else
             Application.Quit();
         #endif
+    }
+
+    public void OnTogglePressed()
+    {
+        if (analysisPanel.activeSelf)
+            analysisPanel.SetActive(false);
+        else
+            analysisPanel.SetActive(true);
     }
 }
