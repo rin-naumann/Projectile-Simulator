@@ -168,8 +168,14 @@ public class UIAnalysisPanel : MonoBehaviour
     public void OnTogglePressed()
     {
         if (analysisPanel.activeSelf)
+        {
             analysisPanel.SetActive(false);
+            livePanel.SetActive(true);
+        }
         else
+        {
             analysisPanel.SetActive(true);
+            livePanel.SetActive(false);
+        }
     }
 }
